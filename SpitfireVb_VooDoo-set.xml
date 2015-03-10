@@ -1,0 +1,233 @@
+<?xml version="1.0"?>
+<!--
+************************************************************************
+Spitfire Vb configuration
+************************************************************************
+-->
+
+<PropertyList>
+
+ <sim>
+  <description>Supermarine Spitfire Mk Vb</description>
+  <author> Vodoun da Vinci, Detlef Faber, StuartC</author>
+  <status>beta 1.2 </status>  
+  <flight-model>yasim</flight-model>
+  <aero>SpitfireVb_VooDoo-yasim</aero>
+  <fuel-fraction>1.0</fuel-fraction>
+
+  <systems>
+   <electrical>
+    <path>Aircraft/Generic/generic-electrical.xml</path>
+	</electrical>
+	<autopilot>
+        <path>Aircraft/SpitfireVb_VooDoo/VooDooPropAP1.xml</path>
+      </autopilot>
+  
+   
+  </systems> 
+  
+  
+   <startup>
+   <splash-texture>Aircraft/SpitfireVb_VooDoo/splash.png</splash-texture>
+  </startup>
+ 
+  <virtual-cockpit archive="y">false</virtual-cockpit>
+  <allow-toggle-cockpit archive="y">false</allow-toggle-cockpit>
+
+  <sound>
+     <path>Aircraft/SpitfireVb_VooDoo/Sounds/sound.xml</path>
+  </sound>
+
+  <submodels> 
+    <serviceable type="bool">true</serviceable>
+  	 <path>Aircraft/SpitfireVb_VooDoo/Models/Effects/guns/submodels.xml</path>
+  </submodels>
+
+  <mp-systems>
+		<combat-enabled type="bool">true</combat-enabled>
+  </mp-systems>
+  
+  <panel>
+  <path>Aircraft/Generic/Panels/generic-vfr-panel.xml</path>
+  <visibility>false</visibility>
+  </panel>
+
+  <model>
+   <path>Aircraft/SpitfireVb_VooDoo/Models/Spitfire_Vb.xml</path>
+   <crew>
+      <pilot>
+        <visible>1.0</visible>
+      </pilot>
+   </crew>
+	    
+ </model> 
+	
+  <view n="0">
+   <internal archive="y">true</internal>
+   <config>
+    <x-offset-m archive="y" type="double">0.0</x-offset-m>
+    <y-offset-m archive="y" type="double">0.6</y-offset-m>
+    <z-offset-m archive="y" type="double">4.35</z-offset-m>
+    <pitch-offset-deg>-7.9</pitch-offset-deg>
+   </config>
+  </view>
+
+  <view n="1">
+   <config>
+    <target-z-offset-m archive="y" type="double">3.49</target-z-offset-m>
+	<pitch-offset-deg archive="y">3</pitch-offset-deg>
+   </config>
+  </view>
+
+  <view n="2">
+   <config>
+    <target-z-offset-m archive="y" type="double">3.49</target-z-offset-m>
+	<pitch-offset-deg archive="y">3</pitch-offset-deg>
+   </config>
+  </view>
+
+  <view n="3">
+   <config>
+    <target-z-offset-m archive="y" type="double">3.49</target-z-offset-m>
+	<pitch-offset-deg archive="y">3</pitch-offset-deg>
+   </config>
+  </view>
+
+  <view n="4">
+   <config>
+    <target-z-offset-m archive="y" type="double">3.49</target-z-offset-m>
+	<pitch-offset-deg archive="y">3</pitch-offset-deg>
+   </config>
+  </view>
+  <view n="5">
+   <config>
+    <target-z-offset-m archive="y" type="double">3.49</target-z-offset-m>
+	<pitch-offset-deg archive="y">3</pitch-offset-deg>
+   </config>
+  </view>
+  <view n="6">
+   <config>
+    <target-z-offset-m archive="y" type="double">3.49</target-z-offset-m>
+	<pitch-offset-deg archive="y">3</pitch-offset-deg>
+   </config>
+  </view>
+  <view n="7">
+   <config>
+    <target-z-offset-m archive="y" type="double">3.49</target-z-offset-m>
+	<pitch-offset-deg archive="y">3</pitch-offset-deg>
+   </config>
+  </view>
+
+  <hud>
+   <enable3d>false</enable3d>
+  </hud>  
+	<menubar>
+		<default>
+			<menu n="10">
+				<label>SpitfireVb</label>
+					<enabled type="bool">true</enabled>
+					<item>
+						<label>Select Livery</label>
+              <binding>
+                <command>nasal</command>
+                <script>aircraft.livery.dialog.toggle()</script>
+              </binding>
+					</item>
+		      
+			</menu>
+		</default>
+	</menubar>
+	<multiplay>
+		<generic>
+			<string/>
+		</generic>
+	</multiplay>
+</sim>
+
+<consumables>
+    <fuel>
+      <tank n="0">
+        <tank-num type="int">0</tank-num>
+        <level-gal_us archive="y">250</level-gal_us>
+      </tank>
+      
+	  
+    </fuel>
+  </consumables>
+
+
+   <environment>
+    <turbulence>
+      <use-cloud-turbulence>true</use-cloud-turbulence>
+    </turbulence>
+   </environment>
+
+
+ <engines>
+  <engine n="0">
+  <running>false</running>
+  <magnetos>1</magnetos>
+  <!--
+   <rpm type="double">700</rpm>
+   -->
+   <!-- fake unimplemented settings -->
+   <fuel-pump-psi type="double">18</fuel-pump-psi>
+   <oil-pressure-psi type="double">75</oil-pressure-psi>
+  </engine>
+ </engines>
+
+
+ <!-- set up control properties for YASim -->
+ <controls>
+  <gear>
+      <brake-parking type="double">1.0</brake-parking>
+    </gear>
+	<armament>
+     <trigger type="bool">false</trigger>
+     <master-arm type="bool">true</master-arm>
+     <position-norm type="int">1</position-norm>
+    </armament>
+   <engines>
+      <engine n="0">
+        <magnetos>0</magnetos>
+        <boost type="double">0.45</boost>
+				<blower type="int">0</blower>
+      </engine>
+   </engines>
+	 <flight>
+			<slipstream type="double">1.0</slipstream>
+			<aileron-effectiveness type ="double">0.1</aileron-effectiveness>
+	 </flight>
+   <gear>
+      <tailwheel-lock>true</tailwheel-lock>
+   </gear>
+   <canopy>
+      <canopy-pos-norm type="float">1.0</canopy-pos-norm>
+   </canopy>
+
+ </controls>
+ <!-- Map Keys -->
+ <input>
+    <keyboard include="Nasal/keyboard.xml"/>
+</input>	
+<!-- Nasal files/scripts -->
+  <nasal>
+
+    <spit9>
+      <file>Aircraft/SpitfireVb_VooDoo/Nasal/spit9.nas</file>
+	  <file>Aircraft/SpitfireVb_VooDoo/Nasal/doors.nas</file>
+	  <file>Aircraft/SpitfireVb_VooDoo/Nasal/liveries.nas</file>
+    </spit9>
+	<guns>
+      <file>Aircraft/SpitfireVb_VooDoo/Nasal/weapons.nas</file>
+      <file>Aircraft/SpitfireVb_VooDoo/Nasal/revi.nas</file>
+    </guns>
+
+   
+  </nasal>
+
+</PropertyList>
+
+
+
+

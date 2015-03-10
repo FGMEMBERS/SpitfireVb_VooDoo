@@ -1,0 +1,736 @@
+<?xml version="1.0"?>
+
+<!-- Supermarine SpitfireVb_VooDoo -->
+
+<PropertyList>
+
+ <path>SpitfireVb_VooDoo.ac</path>
+ 
+ <sound><path>Aircraft/SpitfireVb_VooDoo/Sounds/mp-sound.xml</path></sound>
+
+  <nasal>
+    <load>
+      var update = aircraft.overlay_update.new();
+      var livery_update = aircraft.livery_update.new("Aircraft/SpitfireVb_VooDoo/Models/Liveries", 10);
+	   var self = cmdarg();
+	   var float_0 = self.getNode("sim/multiplay/generic/float[0]", 1);
+      var float_1 = self.getNode("sim/multiplay/generic/float[1]", 1);
+	  var crew_door = self.getNode("instrumentation/doors/crew/position-norm", 1);
+      update.add("Aircraft/Generic/Logos", "sim/multiplay/generic/string");
+	  crew_door.alias(float_0);
+    </load>
+    <unload>
+	livery_update.stop();
+	crew_door.unalias();
+      update.stop();
+    </unload>
+  </nasal>
+
+ <animation>
+    <type>material</type>
+    <object-name>NewHull1.001</object-name>
+    
+    <object-name>sub01</object-name>
+    <object-name>Rudder</object-name>
+    <object-name>PortAileron</object-name>
+    <object-name>Pitch_pivo</object-name>
+    <object-name>StarboardAileron</object-name>
+    <object-name>PortFlap</object-name>
+    <object-name>StarboardFlap</object-name>
+    <object-name>Port_Gear</object-name>
+    <object-name>Starboard_Gear</object-name>
+    
+    <property-base>sim/model/livery</property-base>
+    <texture-prop>texture</texture-prop>
+    <texture>spitfire_colour.png</texture>
+  </animation>
+ 
+ 
+<model>
+	<name>cockpit</name>
+  <path>Aircraft/SpitfireVb_VooDoo/Models/cockpit.xml</path>
+  <offsets>
+        <x-m>-0.033</x-m>
+        <y-m>0.0</y-m>
+        <z-m>-0.17</z-m>
+  </offsets>
+ </model>
+	<animation>
+  <object-name>cockpit</object-name>
+		<type>range</type>
+		<min-m>0</min-m>
+		<max-m>10</max-m>
+	</animation>
+	
+
+	
+	
+	
+<!--shader	-->
+<animation>
+		<type>shader</type>
+		<shader>chrome</shader>
+    <texture>Aircraft/Generic/Effects/glass_shader.png</texture>
+		<object-name>NewGlass</object-name>
+		<object-name>NewGlass.001</object-name>
+		<object-name>noshadowspdisk</object-name>
+		<object-name>noshadowfpdisk</object-name>
+		
+</animation>
+
+ <!--  REMBRANDT support for transparent objects-->
+  <effect>
+    <inherits-from>Effects/model-transparent</inherits-from>
+    <condition>
+      <property>sim/rendering/rembrandt/enabled</property>
+    </condition>
+  <object-name>glass</object-name>
+		<object-name>NewGlass</object-name>
+		<object-name>NewGlass.001</object-name>
+		<object-name>noshadowspdisk</object-name>
+		<object-name>noshadowfpdisk</object-name>
+  </effect>
+	
+
+
+
+ <animation>
+  <type>select</type>
+  <object-name>prop</object-name>
+  <condition>
+   <less-than>
+    <property>engines/engine[0]/rpm</property>
+    <value>1000</value>
+   </less-than>
+  </condition>
+ </animation>
+
+
+<animation>
+  <type>spin</type>
+  <object-name>prophub</object-name>
+    <property>engines/engine[0]/rpm</property>
+    <factor>-0.01</factor>
+  <center>
+   <x-m>0.60</x-m>
+   <y-m>0.0</y-m>
+   <z-m>0.127</z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+  <model> 
+   <path>Aircraft/SpitfireVb_VooDoo/Models/pdisk.xml</path>
+   <name>pdisk</name>
+		<nopreview/>
+    <offsets> 
+   <x-m>0.83</x-m>
+   <y-m>0.0</y-m>
+   <z-m>0.127</z-m>
+    </offsets>
+  </model>
+ <animation>
+  <type>spin</type>
+  <object-name>prop</object-name>
+  <property>engines/engine[0]/rpm</property>
+  <factor>-0.479</factor>
+  <center>
+   <x-m>0.60</x-m>
+   <y-m>0.0</y-m>
+   <z-m>0.127</z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+<!-- left Maingear -->
+ <animation>
+  <type>rotate</type>
+  <object-name>gear.L</object-name>
+  <object-name>wheel.L</object-name>
+  <property>gear/gear[0]/position-norm</property>
+  <interpolation>
+   <entry>
+    <ind>0.0</ind>
+    <dep>0.0</dep>
+   </entry>
+  <entry>
+    <ind>1.00</ind>
+    <dep>85.0</dep>
+   </entry>
+  </interpolation>
+  <center>
+   <x-m>3.085</x-m>
+   <y-m>-0.583</y-m>
+   <z-m>-0.750</z-m>
+  </center>
+  <axis>
+   <x2-m>3.133</x2-m>
+   <y2-m>-0.580</y2-m>
+   <z2-m>-0.647</z2-m>
+   <x1-m>3.042</x1-m>
+   <y1-m>-0.606</y1-m>
+   <z1-m>-0.6228</z1-m>
+  </axis>
+ </animation>
+
+
+<!-- right Maingear -->
+ <animation>
+  <type>rotate</type>
+  <object-name>gear.R</object-name>
+  <object-name>wheel.R</object-name>
+  <property>gear/gear[1]/position-norm</property>
+  <interpolation>
+   <entry>
+    <ind>0.0</ind>
+    <dep>0.0</dep>
+   </entry>
+  <entry>
+    <ind>1.00</ind>
+    <dep>-85.0</dep>
+   </entry>
+  </interpolation>
+  <center>
+   <x-m>3.085</x-m>
+   <y-m>0.583</y-m>
+   <z-m>-0.750</z-m>
+  </center>
+  <axis>
+   <x2-m>3.133</x2-m>
+   <y2-m>0.580</y2-m>
+   <z2-m>-0.647</z2-m>
+   <x1-m>3.042</x1-m>
+   <y1-m>0.606</y1-m>
+   <z1-m>-0.6228</z1-m>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>PortFlap</object-name>
+  <property>surface-positions/flap-pos-norm</property>
+  <factor>-80.0</factor>
+
+<center>
+   <x-m>4</x-m>
+   <y-m>-3.6</y-m>
+   <z-m>-0.47</z-m>
+  </center>
+
+  <axis>
+   <x1-m>3.7</x1-m>
+   <y1-m>-2.6</y1-m>
+   <z1-m>-0.45</z1-m>
+   <x2-m>3.5</x2-m>
+   <y2-m>-4.4</y2-m>
+   <z2-m>-0.25</z2-m>
+  </axis>
+ </animation>
+ <!--<animation>
+  <type>rotate</type>
+  <object-name>PortFlap</object-name>
+  <property>surface-positions/flap-pos-norm</property>
+  <factor>-80.0</factor>
+
+  <center>
+   <x-m>4.654</x-m>
+   <y-m>-0.528</y-m>
+   <z-m>-0.625</z-m>
+  </center>
+
+  <axis>
+   <x1-m>4.683</x1-m>
+   <y1-m>-0.292</y1-m>
+   <z1-m>-0.618</z1-m>
+   <x2-m>4.626</x2-m>
+   <y2-m>-0.763</y2-m>
+   <z2-m>-0.632</z2-m>
+  </axis>
+ </animation> -->
+ <animation>
+  <type>rotate</type>
+  <object-name>StarboardFlap</object-name>
+  <property>surface-positions/flap-pos-norm</property>
+  <factor>80.0</factor>
+
+  <center>
+   <x-m>4</x-m>
+   <y-m>3.6</y-m>
+   <z-m>-0.47</z-m>
+  </center>
+
+  <axis>
+   <x1-m>3.7</x1-m>
+   <y1-m>2.6</y1-m>
+   <z1-m>-0.45</z1-m>
+   <x2-m>3.5</x2-m>
+   <y2-m>4.4</y2-m>
+   <z2-m>-0.25</z2-m>
+  </axis>
+ </animation>
+<!-- <animation>
+  <type>rotate</type>
+  <object-name>StarboardFlap</object-name>
+  <property>surface-positions/flap-pos-norm</property>
+  <factor>80.0</factor>
+
+  <center>
+   <x-m>4.654</x-m>
+   <y-m>0.528</y-m>
+   <z-m>-0.625</z-m>
+  </center>
+
+  <axis>
+   <x1-m>4.683</x1-m>
+   <y1-m>0.292</y1-m>
+   <z1-m>-0.618</z1-m>
+   <x2-m>4.626</x2-m>
+   <y2-m>0.763</y2-m>
+   <z2-m>-0.632</z2-m>
+  </axis>
+ </animation> -->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>coolflap.L</object-name>
+  <property>controls/engines/engine[0]/cowl-flaps-norm</property>
+  <factor>-60.0</factor>
+
+  <center>
+   <x-m>4.167</x-m>
+   <y-m>-0.836</y-m>
+   <z-m>-0.735</z-m>
+  </center>
+
+  <axis>
+   <x1-m>4.164</x1-m>
+   <y1-m>-0.557</y1-m>
+   <z1-m>-0.758</z1-m>
+   <x2-m>4.164</x2-m>
+   <y2-m>-1.114</y2-m>
+   <z2-m>-0.704</z2-m>
+  </axis>
+ </animation>
+ <animation>
+  <type>rotate</type>
+  <object-name>coolflap.R</object-name>
+  <property>controls/engines/engine[0]/cowl-flaps-norm</property>
+  <factor>60.0</factor>
+
+  <center>
+   <x-m>4.167</x-m>
+   <y-m>0.836</y-m>
+   <z-m>-0.735</z-m>
+  </center>
+
+  <axis>
+   <x1-m>4.164</x1-m>
+   <y1-m>0.557</y1-m>
+   <z1-m>-0.758</z1-m>
+   <x2-m>4.164</x2-m>
+   <y2-m>1.114</y2-m>
+   <z2-m>-0.704</z2-m>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>PortAileron</object-name>
+  <property>controls/flight/aileron</property>
+  <factor>-18.0</factor>
+
+  <center>
+   <x-m>3.8</x-m>
+   <y-m>-3.6</y-m>
+   <z-m>-0.47</z-m>
+  </center>
+
+  <axis>
+   <x1-m>3.7</x1-m>
+   <y1-m>-2.6</y1-m>
+   <z1-m>-0.45</z1-m>
+   <x2-m>3.5</x2-m>
+   <y2-m>-4.4</y2-m>
+   <z2-m>-0.25</z2-m>
+  </axis>
+
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>StarboardAileron</object-name>
+  <property>controls/flight/aileron</property>
+  <factor>-18.0</factor>
+
+ <center>
+   <x-m>3.8</x-m>
+   <y-m>3.6</y-m>
+   <z-m>-0.47</z-m>
+  </center>
+
+  <axis>
+   <x1-m>3.7</x1-m>
+   <y1-m>2.6</y1-m>
+   <z1-m>-0.45</z1-m>
+   <x2-m>3.5</x2-m>
+   <y2-m>4.4</y2-m>
+   <z2-m>-0.25</z2-m>
+  </axis>
+
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Rudder</object-name>
+  <property>surface-positions/rudder-pos-norm</property>
+  <factor>30.0</factor>
+
+  <center>
+   <x-m>8.66</x-m>
+   <y-m>0</y-m>
+   <z-m>0.5</z-m>
+  </center>
+
+  <axis>
+   <x>0.000000</x>
+   <y>0.000000</y>
+   <z>1.000000</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Pitch_pivo</object-name>
+  <property>surface-positions/elevator-pos-norm</property>
+  <factor>-18.0</factor>
+
+ <center>
+   <x-m>8.35</x-m>
+   <y-m>0</y-m>
+   <z-m>0.3</z-m>
+  </center>
+
+  <axis>
+   <x1-m>8.35</x1-m>
+   <y1-m>1.2</y1-m>
+   <z1-m>0.3</z1-m>
+   <x2-m>8.35</x2-m>
+   <y2-m>-1.2</y2-m>
+   <z2-m>0.3</z2-m>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>elevator.R</object-name>
+  <property>surface-positions/elevator-pos-norm</property>
+  <interpolation>
+   <entry>
+    <ind>-1.0</ind>
+    <dep>-30.0</dep>
+   </entry>
+   <entry>
+    <ind>0.0</ind>
+    <dep>0</dep>
+   </entry>
+   <entry>
+    <ind>1.00</ind>
+    <dep>20.0</dep>
+   </entry>
+  </interpolation>
+  <center>
+   <x-m>9.012</x-m>
+   <y-m>0.702</y-m>
+   <z-m>0.405</z-m>
+  </center>
+  <axis>
+   <x>0.000000</x>
+   <y>1.000000</y>
+   <z>0.000000</z>
+   </axis>
+ </animation>
+
+<animation> 
+      <type>rotate</type>
+      <object-name>tailwheel</object-name>
+      <object-name>tailgear2</object-name>
+      <property>gear/gear[2]/caster-angle-deg</property>
+      <factor>1</factor>
+      <center> 
+        <x-m>8.345</x-m>
+        <y-m>0</y-m>
+        <z-m>-0.522</z-m>
+      </center>
+      <axis> 
+        <x1-m>8.351</x1-m>
+        <y1-m>0</y1-m>
+        <z1-m>-0.567</z1-m>
+        <x2-m>8.332</x2-m>
+        <y2-m>0</y2-m>
+        <z2-m>-0.472</z2-m>
+      </axis>
+    </animation> 
+
+ <animation>
+  <type>translate</type>
+  <object-name>canopy</object-name>
+  <object-name>noshadow.canopyglas</object-name>
+  <property>/controls/canopy/canopy-pos-norm</property>
+  <interpolation>
+   <entry>
+    <ind>0.0</ind>
+    <dep>0</dep>
+   </entry>
+   <entry>
+    <ind>1.00</ind>
+    <dep>0.7</dep>
+   </entry>
+  </interpolation>
+  <axis>
+   <x>1.0</x>
+   <y>0.000000</y>
+   <z>-0.0</z>
+  </axis>
+ </animation>
+ 
+<!-- left armament
+    <model> 
+      <path>Aircraft/spitfireIX/Models/Effects/blaze.xml</path>
+	  <name>leftgunblaze</name>
+		<nopreview/>
+      <offsets> 
+        <x-m>2.9</x-m>
+        <y-m>-3.735</y-m>
+        <z-m>-0.266</z-m>
+      </offsets>
+    </model>
+ <animation>
+  <type>select</type>
+  <object-name>leftgunblaze</object-name>
+  <condition>
+   <equals>
+    <property>controls/armament/gun1</property>
+    <value>true</value>
+   </equals>
+  </condition>
+ </animation>
+
+    <model> 
+      <path>Aircraft/spitfireIX/Models/Effects/blaze.xml</path>
+	  <name>leftgun2blaze</name>
+		<nopreview/>
+      <offsets> 
+        <x-m>2.9</x-m>
+        <y-m>-3.067</y-m>
+        <z-m>-0.321</z-m>
+      </offsets>
+    </model>
+ <animation>
+  <type>select</type>
+  <object-name>leftgun2blaze</object-name>
+  <condition>
+   <equals>
+    <property>controls/armament/gun2</property>
+    <value>true</value>
+   </equals>
+  </condition>
+ </animation>
+    <model> 
+      <path>Aircraft/spitfireIX/Models/Effects/blaze.xml</path>
+	  <name>leftcannonblaze</name>
+		<nopreview/>
+      <offsets> 
+        <x-m>1.5</x-m>
+        <y-m>-2.08</y-m>
+        <z-m>-0.393</z-m>
+      </offsets>
+    </model>
+ <animation>
+  <type>select</type>
+  <object-name>leftcannonblaze</object-name>
+  <condition>
+   <equals>
+    <property>controls/armament/cannon1</property>
+    <value>true</value>
+   </equals>
+  </condition>
+ </animation>
+-->
+<!-- right armament
+
+    <model> 
+      <path>Aircraft/spitfireIX/Models/Effects/blaze.xml</path>
+	  <name>rightgunblaze</name>
+		<nopreview/>
+      <offsets> 
+        <x-m>2.9</x-m>
+        <y-m>3.735</y-m>
+        <z-m>-0.266</z-m>
+      </offsets>
+    </model>
+ <animation>
+  <type>select</type>
+  <object-name>rightgunblaze</object-name>
+  <condition>
+   <equals>
+    <property>controls/armament/gun4</property>
+    <value>true</value>
+   </equals>
+  </condition>
+ </animation>
+
+    <model> 
+      <path>Aircraft/spitfireIX/Models/Effects/blaze.xml</path>
+	  <name>rightgun2blaze</name>
+		<nopreview/>
+      <offsets> 
+        <x-m>2.9</x-m>
+        <y-m>3.067</y-m>
+        <z-m>-0.321</z-m>
+      </offsets>
+    </model>
+ <animation>
+  <type>select</type>
+  <object-name>rightgun2blaze</object-name>
+  <condition>
+   <equals>
+    <property>controls/armament/gun3</property>
+    <value>true</value>
+   </equals>
+  </condition>
+ </animation>
+    <model> 
+      <path>Aircraft/spitfireIX/Models/Effects/blaze.xml</path>
+	  <name>rightcannonblaze</name>
+		<nopreview/>
+      <offsets> 
+        <x-m>1.5</x-m>
+        <y-m>2.08</y-m>
+        <z-m>-0.393</z-m>
+      </offsets>
+    </model>
+ <animation>
+  <type>select</type>
+  <object-name>rightcannonblaze</object-name>
+  <condition>
+   <equals>
+    <property>controls/armament/cannon2</property>
+    <value>true</value>
+   </equals>
+  </condition>
+ </animation>
+-->
+  <animation>
+    <type>material</type>
+    <object-name>fuselage</object-name>
+    <object-name>wing.L</object-name>
+    <object-name>wing.R</object-name>
+    <object-name>stdtip.R</object-name>
+    <object-name>stdtip.L</object-name>
+    <object-name>aileron.L</object-name>
+    <object-name>aileron.R</object-name>
+    <object-name>flap1.L</object-name>
+    <object-name>flap1.R</object-name>
+    <object-name>flap2.L</object-name>
+    <object-name>flap2.R</object-name>
+    <object-name>Port_Gear</object-name>
+    <object-name>Starboard_Gear</object-name>
+    <object-name>stab.L</object-name>
+    <object-name>stab.R</object-name>
+    <object-name>elevator.L</object-name>
+    <object-name>elevator.R</object-name>
+    <object-name>coolflap.L</object-name>
+    <object-name>coolflap.R</object-name>
+    <object-name>cockpitdoor</object-name>
+    <object-name>canopyframe</object-name>
+    <object-name>frontcanopy</object-name>
+    <object-name>mast</object-name>
+    <object-name>rudder</object-name>
+    <property-base>sim/model/livery</property-base>
+    <texture-prop>texture</texture-prop>
+    
+  </animation>
+
+       
+   <!--GUNS-->
+<model>
+    <path>Aircraft/SpitfireVb_VooDoo/Models/Effects/guns/fire.xml</path>
+    <offsets>
+      <x-m> 1.43</x-m>
+      <y-m> -1.9 </y-m>
+      <z-m> -0.47 </z-m>
+      <roll-deg>    0 </roll-deg>
+      <pitch-deg> 180 </pitch-deg>
+      <heading-deg> 0 </heading-deg>
+    </offsets>
+  </model>
+  
+  <model>
+    <path>Aircraft/SpitfireVb_VooDoo/Models/Effects/guns/fire.xml</path>
+    <offsets>
+      <x-m> 2.37</x-m>
+      <y-m> -2.83 </y-m>
+      <z-m> -0.34 </z-m>
+      <roll-deg>    0 </roll-deg>
+      <pitch-deg> 180 </pitch-deg>
+      <heading-deg> 0 </heading-deg>
+    </offsets>
+  </model>
+  
+  <model>
+    <path>Aircraft/SpitfireVb_VooDoo/Models/Effects/guns/fire.xml</path>
+    <offsets>
+      <x-m> 2.45</x-m>
+      <y-m> -3.73 </y-m>
+      <z-m> -0.25 </z-m>
+      <roll-deg>    0 </roll-deg>
+      <pitch-deg> 180 </pitch-deg>
+      <heading-deg> 0 </heading-deg>
+    </offsets>
+  </model>
+
+  <!-- Droit -->
+  <model>
+    <path>Aircraft/SpitfireVb_VooDoo/Models/Effects/guns/fire.xml</path>
+    <offsets>
+      <x-m> 1.43</x-m>
+      <y-m> 1.9 </y-m>
+      <z-m> -0.47 </z-m>
+      <roll-deg>    0 </roll-deg>
+      <pitch-deg> 180 </pitch-deg>
+      <heading-deg> 0 </heading-deg>
+    </offsets>
+  </model>
+  
+  <model>
+    <path>Aircraft/SpitfireVb_VooDoo/Models/Effects/guns/fire.xml</path>
+    <offsets>
+      <x-m> 2.37</x-m>
+      <y-m> 2.83 </y-m>
+      <z-m> -0.34 </z-m>
+      <roll-deg>    0 </roll-deg>
+      <pitch-deg> 180 </pitch-deg>
+      <heading-deg> 0 </heading-deg>
+    </offsets>
+  </model>
+  
+  <model>
+    <path>Aircraft/SpitfireVb_VooDoo/Models/Effects/guns/fire.xml</path>
+    <offsets>
+      <x-m> 2.45</x-m>
+      <y-m> 3.73 </y-m>
+      <z-m> -0.25 </z-m>
+      <roll-deg>    0 </roll-deg>
+      <pitch-deg> 180 </pitch-deg>
+      <heading-deg> 0 </heading-deg>
+    </offsets>
+  </model>
+  
+</PropertyList>
